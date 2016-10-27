@@ -220,7 +220,6 @@ function create(options) {
     }
 
 
-    var token = req.headers['x-gitlab-token'];
     var gogsSecret, body;
     var event = req.headers['x-gogs-event'];
 
@@ -232,32 +231,29 @@ function create(options) {
       });
 
       req.on('end', function () {
-        body = JSON.parse(jsonString)
+        body = JSON.parse(jsonString);
         gogsSecret = body.secret;
         if (!event)
-          return hasError('x-gogs-event found on request')
+          return hasError('x-gogs-event found on request');
 
-        //if (!id)
-        // return hasError('No X-Github-Delivery or X-Gitlab-Delivery found on request')
-
+        
         if (events && events.indexOf(event) == -1)
-          return hasError('x-gogs-event is not acceptable')
+          return hasError('x-gogs-event is not acceptable');
 
 
         if (options.secret !== gogsSecret) {
 
-          return hasError('X-Gogs-Secret does not match')
+          return hasError('X-Gogs-Secret does not match');
         }
         res.writeHead(200, {
           'content-type': 'application/json'
         });
-        res.end('{"ok":true}')
+        res.end('{"ok":true}');
 
         let obj = body;
 
         var emitData = {
           event: event,
-          // id: id,
           payload: obj,
           protocol: req.protocol,
           host: req.headers['host'],
