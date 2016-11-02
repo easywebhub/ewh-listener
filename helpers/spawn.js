@@ -1,5 +1,5 @@
 "use strict";
-const Promise = require('Bluebird'),
+const Promise = require('bluebird'),
     ChildProcess = require('child_process');
 
 function spawnShell(command, args, options) {
