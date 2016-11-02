@@ -143,10 +143,10 @@ handler.on('push', event => {
     let dataPath = repoConfig.dataPath || '';
     if (!dataPath)
         dataPath = path.join(config.dataPath, repoKey);
-    let GH = new GithubMng({
-        folderPath: dataPath,
-        githubUrl: ' https://github.com/tungptvn/gogss.git'
-    });
+//     let GH = new GithubMng({
+//         folderPath: dataPath,
+//         githubUrl: ' https://github.com/tungptvn/gogss.git'
+//     });
 
 
     gitCloneOrPullBranch(
@@ -157,9 +157,9 @@ handler.on('push', event => {
         console.log('END: ', rs);
 
 
-        GH.push().then(result => {
-            console.log('push to github: ', result);
-        });
+//         GH.push().then(result => {
+//             console.log('push to github: ', result);
+//         });
     }).catch(ex => {
         console.log('git error', ex)
     });
