@@ -140,9 +140,11 @@ handler.on('push', event => {
     }
     // let repoFolderName = genRepoFolderName(repoKey);
 
-    let dataPath = repoConfig.dataPath || '';
-    if (!dataPath)
-        dataPath = path.join(config.dataPath, repoKey);
+    let dataPath = repoConfig.dataPath || config.dataPath;
+    //if (!dataPath)
+      //  dataPath = config.dataPath;
+    
+    dataPath = path.join(dataPath, repoKey);
     let GH = new GithubMng({
         folderPath: dataPath,
         githubUrl: ' https://github.com/tungptvn/gogss.git'
