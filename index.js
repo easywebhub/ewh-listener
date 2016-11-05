@@ -144,6 +144,7 @@ handler.on('push', event => {
     //if (!dataPath)
       //  dataPath = config.dataPath;
     
+    dataPath = path.join(dataPath, repoKey);
 //     let GH = new GithubMng({
 //         folderPath: dataPath,
 //         githubUrl: ' https://github.com/tungptvn/gogss.git'
